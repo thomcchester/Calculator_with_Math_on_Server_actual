@@ -1,0 +1,25 @@
+.holder{
+  margin: 0 auto;
+}
+
+
+
+.holder{
+  margin-top: 35px;
+  width:150px;
+  margin-left:250px;
+  margin-right:250px;
+
+}
+
+.calc{
+
+}
+
+.label{
+  margin-left:250px;
+  margin-right:250px;
+  height: 100px;
+  width:400px;
+  font-size: 5em;
+}
