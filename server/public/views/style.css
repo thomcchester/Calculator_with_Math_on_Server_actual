@@ -2,18 +2,15 @@
   margin: 0 auto;
 }
 
-
-
 .holder{
   margin-top: 35px;
-  width:150px;
+  width:90%;
   margin-left:250px;
   margin-right:250px;
 
 }
-
-.calc{
-
+.btn{
+  width:15%;
 }
 
 .label{

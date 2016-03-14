@@ -4,6 +4,7 @@ var holdingNumberY="";
 var whichSign="";
 var otherSign="";
 
+
 $(document).ready(function(){
     //prevent form submission
     $("#projectForm").on("submit", function(event){
@@ -22,13 +23,14 @@ function listening(){
   $(".equal").on("click", equalHit);
 }
 
+
 function equalHit(){
-  if((whichSign!="") && (holdingNumberY!="" ) && (holdingNumberX!="")){
-    var sendObject={
-      "xval":holdingNumberX,
-      "yval": holdingNumberY,
-      "operation":whichSign
-    }
+    if((whichSign!="") && (holdingNumberY!="" ) && (holdingNumberX!="")){
+      var sendObject={
+        "xval":holdingNumberX,
+        "yval": holdingNumberY,
+        "operation":whichSign
+      }
   }
   //now make Ajax Call (francis Call)
   sendFrancis(sendObject);
@@ -52,6 +54,10 @@ function signHitting(){
   else if ($(this).hasClass("divide")){
     whichSign="divide";
     otherSign="/"
+  }
+  else if ($(this).hasClass("EE")){
+    whichSign="EE"
+    otherSign="EE"
   }
   $("numbers").empty();
   $("numbers").append(holdingNumberX+"   "+otherSign)

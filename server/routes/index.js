@@ -1,8 +1,13 @@
 var express = require("express");
 var router = express.Router();
+// var mongoose = require("mongoose");
 var path = require("path");
+
 var employee = require("../modules/node_module.js");
 var answer=0;
+// mongoose.connect("mongodb://localhost:27017/kappa_cats");
+
+// var Cat = mongoose.model("Cat", {name:String});
 
 router.post("/objectOfInformation", function(req,res){
     var xval=parseFloat(req.body.xval);
@@ -20,6 +25,8 @@ router.post("/objectOfInformation", function(req,res){
       multiplying(xval,yval);
     }else if(manipulation=="divide"){
       dividing(xval,yval);
+    }else if(manipulation=="EE"){
+      EEing(xval,yval);
     }
     console.log("answer after: ",answer);
 
@@ -33,7 +40,9 @@ function toFloatNumber(xval,yval){
   xval=parseFloat(xval);
   yval=parseFloat(yval);
 }
-
+function EEing(xval,yval){
+  answer=xval+"x10^"+yval
+}
 function adding(xval,yval){
   answer=xval+yval;
 }
