@@ -14,6 +14,8 @@ $(document).ready(function(){
 });
 
 function listening(){
+  $(".clear").on("click",clearing);
+  $(".absClear").on("click",absClearing);
   $(".sign").on("click",signHitting);
   if (signHit=="0"){
   $(".btn").on("click",clickButtonX);
@@ -21,7 +23,9 @@ function listening(){
   $(".btn").on("click",clickButtonY);
 }
   $(".equal").on("click", equalHit);
+
 }
+
 
 
 function equalHit(){
@@ -35,6 +39,25 @@ function equalHit(){
   //now make Ajax Call (francis Call)
   sendFrancis(sendObject);
 }
+function absClearing(){
+  holdingNumberY="";
+  holdingNumberX="";
+  otherSign="";
+}
+function clearing(){
+  console.log("running");
+  if((holdingNumberY=="")&&(otherSign=="")){
+    holdingNumberX="";
+    console.log("first");
+  }else if(holdingNumberY==""){
+    otherSign="";
+    console.log('second');
+  }else{
+    holdingNumberY="";
+    console.log("third");
+  }
+}
+
 
 function signHitting(){
   signHit=signHit+1;
