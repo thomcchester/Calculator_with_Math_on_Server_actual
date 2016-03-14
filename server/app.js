@@ -6,8 +6,10 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.set("port", (process.env.PORT || 3000));
+
 app.use("/", index);
 
-app.listen(3000, function(){
-    console.log("Listening on port 3000");
+app.listen(app.get("port"), function(){
+    console.log("Listening on port ", app.get("port"));
 });
