@@ -45,19 +45,14 @@ function absClearing(){
   otherSign="";
 }
 function clearing(){
-  console.log("running");
   if((holdingNumberY=="")&&(otherSign=="")){
     holdingNumberX="";
-    console.log("first");
   }else if(holdingNumberY==""){
     otherSign="";
-    console.log('second');
   }else{
     holdingNumberY="";
-    console.log("third");
   }
 }
-
 
 function signHitting(){
   signHit=signHit+1;
