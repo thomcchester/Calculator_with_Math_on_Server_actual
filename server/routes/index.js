@@ -27,6 +27,18 @@ router.post("/objectOfInformation", function(req,res){
       dividing(xval,yval);
     }else if(manipulation=="EE"){
       EEing(xval,yval);
+    }else if(manipulation=="x^y"){
+      xToTheYth(xval,yval);
+    }else if(manipulation=="ln"){
+      lnFunction(xval,yval);
+    }else if(manipulation=="oneOVer"){
+      oneOverFunc(xval);
+    }else if(manipulation=="ythRoot"){
+      nthRoot(xval,yval);
+    }else if(manipulation=="x^.5"){
+      sqrting(xval);
+    }else if(manipulation=="e^x"){
+      eXing(xval);
     }
     console.log("answer after: ",answer);
 
@@ -35,6 +47,28 @@ router.post("/objectOfInformation", function(req,res){
     res.send({response:thing});
 
 });
+function eXing(xval){
+  answer=Math.pow(Math.E,xval);
+}
+function sqrting(xval){
+  answer=Math.pow(xval,1/2);
+}
+function nthRoot(xval,yval){
+  answer=Math.pow(xval,(1/yval));
+}
+function oneOverFunc(xval){
+  answer=1/xval;
+}
+function lnFunction(xval){
+  answer=Math.log(xval);
+}
+function xToTheYth(xval,yval){
+  holder=xval;
+  for(var i=1; i<(yval);i++){
+    xval=xval*holder;
+  }
+  answer=xval
+}
 
 function toFloatNumber(xval,yval){
   xval=parseFloat(xval);

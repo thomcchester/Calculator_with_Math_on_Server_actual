@@ -4,7 +4,7 @@ var holdingNumberY="";
 var whichSign="";
 var otherSign="";
 
-
+console.log(Math.pow(16,(1/2)));
 $(document).ready(function(){
     //prevent form submission
     $("#projectForm").on("submit", function(event){
@@ -30,7 +30,7 @@ function equalHit(){
         "xval":holdingNumberX,
         "yval": holdingNumberY,
         "operation":whichSign
-      }
+      };
   }
   //now make Ajax Call (francis Call)
   sendFrancis(sendObject);
@@ -49,15 +49,34 @@ function signHitting(){
   }
   else if ($(this).hasClass("multiply")){
     whichSign="multiply";
-    otherSign="x"
+    otherSign="x";
   }
   else if ($(this).hasClass("divide")){
     whichSign="divide";
-    otherSign="/"
+    otherSign="/";
   }
   else if ($(this).hasClass("EE")){
-    whichSign="EE"
-    otherSign="EE"
+    whichSign="EE";
+    otherSign="EE";
+  }
+  else if($(this).hasClass("x^y")){
+    whichSign="x^y";
+    otherSign="x^y";
+  }else if($(this).hasClass("ln")){
+    whichSign="ln";
+    otherSign="ln";
+  }else if ($(this).hasClass("oneOver")){
+    whichSign="oneOVer";
+    otherSign="1/x";
+  }else if ($(this).hasClass("ythRoot")){
+    whichSign="ythRoot";
+    otherSign="x^(1/y)";
+  }else if ($(this).hasClass("x^.5")){
+    whichSign="x^.5";
+    otherSign="x^.5";
+  }else if ($(this).hasClass("e^x")){
+    whichSign="e^x";
+    otherSign="e^x";
   }
   $("numbers").empty();
   $("numbers").append(holdingNumberX+"   "+otherSign)
@@ -138,6 +157,9 @@ function clickButtonX(){
 }
 
 function sendFrancis (sendObject){
+  if (holdingNumberY==""){
+    holdingNumberY="0"
+  }
   $.ajax({
       type: "POST",
       url: "/objectOfInformation",
