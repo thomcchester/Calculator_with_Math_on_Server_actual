@@ -4,7 +4,6 @@ var holdingNumberY="";
 var whichSign="";
 var otherSign="";
 
-console.log(Math.pow(16,(1/2)));
 $(document).ready(function(){
     //prevent form submission
     $("#projectForm").on("submit", function(event){
@@ -17,18 +16,25 @@ function listening(){
   $(".clear").on("click",clearing);
   $(".absClear").on("click",absClearing);
   $(".sign").on("click",signHitting);
+
   if (signHit=="0"){
   $(".btn").on("click",clickButtonX);
+
   }else{
   $(".btn").on("click",clickButtonY);
+
 }
   $(".equal").on("click", equalHit);
+
 
 }
 
 
 
 function equalHit(){
+  if (holdingNumberY===""){
+    holdingNumberY="0";
+  }
     if((whichSign!="") && (holdingNumberY!="" ) && (holdingNumberX!="")){
       var sendObject={
         "xval":holdingNumberX,
@@ -97,7 +103,8 @@ function signHitting(){
     otherSign="e^x";
   }
   $("numbers").empty();
-  $("numbers").append(holdingNumberX+"   "+otherSign)
+  $("numbers").append(holdingNumberX+"   "+otherSign);
+  console.log("sign",holdingNumberX, holdingNumberY, whichSign);
 }
 
 function clickButtonX(){
@@ -136,6 +143,7 @@ function clickButtonX(){
     }
     $(".numbers").empty();
     $(".numbers").append(holdingNumberX);
+    console.log("x",holdingNumberX, holdingNumberY, whichSign);
   }else{
     if ($(this).hasClass("one")){
     holdingNumberY=holdingNumberY+"1";}
@@ -171,13 +179,12 @@ function clickButtonX(){
     }
     $(".numbers").empty();
     $(".numbers").append(holdingNumberX+" "+ otherSign+"  "+ holdingNumberY);
+    console.log("y",holdingNumberX, holdingNumberY, whichSign);
   }
 }
 
 function sendFrancis (sendObject){
-  if (holdingNumberY==""){
-    holdingNumberY="0"
-  }
+
   $.ajax({
       type: "POST",
       url: "/objectOfInformation",
